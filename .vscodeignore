@@ -1,0 +1,12 @@
+**/*.ts
+tsconfig.*
+viewer.vite.config.js
+vite.config.js
+node_modules
+xschem_lib
+xschem-viewer
+.vscode
+build_viewer.sh
+.github
+.gitignore
+.git

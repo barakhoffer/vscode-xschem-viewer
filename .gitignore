@@ -1,0 +1,6 @@
+node_modules
+xschem-viewer
+xschem_lib
+tsconfig.tsbuildinfo
+*.vsix
+dist

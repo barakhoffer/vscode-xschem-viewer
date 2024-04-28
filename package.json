@@ -1,0 +1,53 @@
+{
+  "name": "vscode-xschem-viewer",
+  "version": "1.0.0",
+  "description": "VScode extension to view Xschem schematic files, using tiny-tapeout xschem-viewer.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barakhoffer/vscode-xschem-viewer.git"
+  },
+  "type": "module",
+  "scripts": {
+    "vscode:prepackage": "npm run build",
+    "build": "tsc && vite build && ./build_viewer.sh"
+  },
+  "keywords": [
+    "xschem",
+    "asic",
+    "vlsi",
+    "schematic",
+    "viewer"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.cjs",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "xschem.viewXschem",
+        "displayName": "Xschem",
+        "selector": [
+          {
+            "filenamePattern": "*.sch"
+          }
+        ]
+      }
+    ]
+  },
+  "author": "Barak Hoffer",
+  "publisher": "barakhoffer",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/vscode": "^1.73.0",
+    "@types/vscode-webview": "^1.57.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "typescript": "~5.3.0",
+    "vite": "^5.1.5",
+    "vite-plugin-string-replace": "^1.1.2"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  }
+}
