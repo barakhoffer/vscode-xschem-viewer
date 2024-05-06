@@ -1,7 +1,8 @@
 {
   "name": "vscode-xschem-viewer",
   "version": "1.0.0",
-  "description": "VScode extension to view Xschem schematic files, using tiny-tapeout xschem-viewer.",
+  "description": "Explore and visualize XSchem schematics in vscode, using xschem-viewer by Tiny Tapeout.",
+  "icon" : "xschem_logo.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/barakhoffer/vscode-xschem-viewer.git"
@@ -30,6 +31,9 @@
         "selector": [
           {
             "filenamePattern": "*.sch"
+          },
+          {
+            "filenamePattern": "*.sym"
           }
         ]
       }

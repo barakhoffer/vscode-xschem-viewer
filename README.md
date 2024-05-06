@@ -3,8 +3,10 @@
 [![Build and Release](https://github.com/barakhoffer/vscode-xschem-viewer/actions/workflows/release.yaml/badge.svg)](https://github.com/barakhoffer/vscode-xschem-viewer/actions/workflows/release.yaml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Explore and visualize [XSchem](https://xschem.sourceforge.io/stefan/index.html) schematics in vscode, using tiny-tapeout [xschem-viewer](https://github.com/TinyTapeout/xschem-viewer).
+Explore and visualize [XSchem](https://xschem.sourceforge.io/stefan/index.html) schematics in vscode, using [xschem-viewer](https://github.com/TinyTapeout/xschem-viewer) by Tiny Tapeout.
 
+Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+To learn more and get started, visit [tinytapeout.com](https://tinytapeout.com).
 
 ## Local Development
 
