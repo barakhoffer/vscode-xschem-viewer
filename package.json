@@ -40,7 +40,7 @@
     ]
   },
   "author": "Barak Hoffer",
-  "publisher": "barakhoffer",
+  "publisher": "barakh",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/vscode": "^1.73.0",
