@@ -1,6 +1,6 @@
 {
   "name": "vscode-xschem-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Explore and visualize XSchem schematics in vscode, using xschem-viewer by Tiny Tapeout.",
   "icon" : "xschem_logo.png",
   "repository": {
