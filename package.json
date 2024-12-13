@@ -1,8 +1,8 @@
 {
   "name": "vscode-xschem-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Explore and visualize XSchem schematics in vscode, using xschem-viewer by Tiny Tapeout.",
-  "icon" : "xschem_logo.png",
+  "icon": "xschem_logo.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/barakhoffer/vscode-xschem-viewer.git"
@@ -37,19 +37,46 @@
           }
         ]
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "xschem.runSimulation",
+        "title": "Run Xschem Simulation",
+        "icon": "$(play)"
+      },
+      {
+        "command": "xschem.editSchematic",
+        "title": "Open in Xschem",
+        "icon": "$(pencil)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "xschem.runSimulation",
+          "group": "navigation",
+          "when": "resourceExtname == .sch"
+        },
+        {
+          "command": "xschem.editSchematic",
+          "group": "navigation",
+          "when": "resourceExtname == .sch"
+        }        
+      ]
+    }
   },
   "author": "Barak Hoffer",
   "publisher": "barakh",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/node": "^22.10.2",
     "@types/vscode": "^1.73.0",
     "@types/vscode-webview": "^1.57.0",
     "eslint": "^8.57.0",
-    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-config-love": "^43.0.1",
     "typescript": "~5.3.0",
     "vite": "^5.1.5",
-    "vite-plugin-string-replace": "^1.1.2"
+    "vite-plugin-string-replace": "^1.1.3"
   },
   "engines": {
     "vscode": "^1.80.0"

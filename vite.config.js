@@ -16,7 +16,7 @@ export default defineConfig(() => {
           fileName: 'extension'
       },
       rollupOptions: {
-        external: ['vscode']
+        external: ['vscode', 'child_process']
       },
       sourcemap: false
     }

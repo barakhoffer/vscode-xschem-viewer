@@ -24,6 +24,9 @@ To learn more and get started, visit [tinytapeout.com](https://tinytapeout.com).
 
 Enjoy!
 
+## Change Log
+- 13/12/24 - version 1.0.1, add buttons to run simulation and open xschem
+
 ## License
 
 vscode-xschem-viewer is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for more details.

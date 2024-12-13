@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
+import { exec } from 'child_process';
 
 export function activate(context: vscode.ExtensionContext) {
-    context.subscriptions.push(XschemEditorProvider.register(context));
+    XschemEditorProvider.register(context);
 }
 
 function getNonce() {
@@ -24,10 +25,26 @@ export class XschemEditorProvider implements vscode.CustomReadonlyEditorProvider
 					retainContextWhenHidden: true
 				}
 			});
+		const runCmd = vscode.commands.registerCommand('xschem.runSimulation', () => {
+			console.log(provider.activeSchematic);
+			if (provider.activeSchematic) {
+				exec(`xschem -x -n -S -q ${provider.activeSchematic.uri.fsPath}`, (error, stdout, stderr) => {});
+			}
+			});
+		const editCmd = vscode.commands.registerCommand('xschem.editSchematic', () => {
+			console.log(provider.activeSchematic);
+			if (provider.activeSchematic) {
+				exec(`xschem ${provider.activeSchematic.uri.fsPath}`, (error, stdout, stderr) => {});
+			}
+			});			
+		context.subscriptions.push(providerRegistration);
+		context.subscriptions.push(runCmd);
+		context.subscriptions.push(editCmd);
 		return providerRegistration;
 	}
 
 	private static readonly viewType = 'xschem.viewXschem';
+	private activeSchematic: vscode.CustomDocument | undefined;
 
 	constructor(
 		private readonly context: vscode.ExtensionContext
@@ -36,6 +53,7 @@ export class XschemEditorProvider implements vscode.CustomReadonlyEditorProvider
 	public async openCustomDocument(uri: vscode.Uri) {
 		return { uri, dispose: () => { } };
 	}
+
 
 	public async resolveCustomEditor(
 		document: vscode.CustomDocument,
@@ -47,6 +65,18 @@ export class XschemEditorProvider implements vscode.CustomReadonlyEditorProvider
 			localResourceRoots: [vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'assets'), vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'xschem_lib'),
 			vscode.Uri.joinPath(this.context.extensionUri, 'dist', 'tcl'), vscode.Uri.joinPath(document.uri, '..')]
 		};
+		this.activeSchematic = document;
+		webviewPanel.onDidChangeViewState((e) => {
+			if (e.webviewPanel.active) {
+			this.activeSchematic = document;
+			}
+		});
+
+		webviewPanel.onDidDispose(() => {
+			if (this.activeSchematic?.uri.toString() === document.uri.toString()) {
+				this.activeSchematic = undefined;
+			}
+		});		
 		webviewPanel.webview.html = await this.getHtmlForWebview(document, webviewPanel.webview);
 	}
 
